@@ -3,18 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Product extends Model
 {
+
+    // protected $table = 'productos';
+
     protected $fillable = [
         'name',
+        'code',
         'slug',
         'summary',
+        'description',
+        'price',
+        'image',
+        'is_active',
+        'category_id',
     ];
 
-    protected static function booted()
+      protected static function booted()
     {
         static::creating(function($category){
             $category->slug = Str::slug($category->name);
@@ -25,8 +33,8 @@ class Category extends Model
         });
     }
 
-    public function products(): HasMany
+    public function category()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Category::class);
     }
 }

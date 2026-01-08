@@ -13,13 +13,20 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class CategoryResource extends Resource
 {
+
+    protected static ?string $navigationLabel = 'Categorías';
+    protected static ?string $label = 'Categoría';
+    protected static ?string $pluralLabel = 'Categorías';
+
+    protected static ?string $slug = 'categorias';
+    protected static string|UnitEnum|null $navigationGroup = 'Administración';
+
     protected static ?string $model = Category::class;
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
     protected static ?string $recordTitleAttribute = 'Category';
 
     public static function form(Schema $schema): Schema
@@ -43,8 +50,8 @@ class CategoryResource extends Resource
     {
         return [
             'index' => ListCategories::route('/'),
-            'create' => CreateCategory::route('/create'),
-            'edit' => EditCategory::route('/{record}/edit'),
+            // 'create' => CreateCategory::route('/create'),
+            // 'edit' => EditCategory::route('/{record}/edit'),
         ];
     }
 }

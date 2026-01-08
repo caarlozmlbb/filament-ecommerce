@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Categories\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class CategoryForm
@@ -10,8 +11,21 @@ class CategoryForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->components([
-
+                Section::make('Información de la categoria')
+                    ->description('Configure los detalles de su categoria')
+                    ->collapsible()
+                    ->icon('heroicon-o-tag')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->required()
+                            ->label('Nombre'),
+                        TextInput::make('summary')
+                            ->required()
+                            ->label('Resumen'),
+                    ])
             ]);
     }
 }
