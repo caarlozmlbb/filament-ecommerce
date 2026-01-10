@@ -18,6 +18,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,9 +28,20 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('ZySoft')
+            ->brandLogo(asset('image/Zysoft Horizontal Negro.png'))
+            ->darkModeBrandLogo(asset('image/Zisoft Horizontal Blanco.png'))
+            ->brandLogoHeight('3rem')
+            ->favicon(asset('image/rubik.png'))
+            ->font('Montserrat')
+            ->sidebarCollapsibleOnDesktop()
+            ->plugin(FilamentAbyssThemePlugin::make())
             ->login()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Indigo,
+                'danger' => Color::Red,
+                'gray' => Color::Slate,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
