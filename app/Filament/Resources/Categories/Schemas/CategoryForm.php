@@ -18,14 +18,21 @@ class CategoryForm
                     ->collapsible()
                     ->icon('heroicon-o-tag')
                     ->columns(2)
-                    ->schema([
-                        TextInput::make('name')
-                            ->required()
-                            ->label('Nombre'),
-                        TextInput::make('summary')
-                            ->required()
-                            ->label('Resumen'),
-                    ])
+                    ->schema(static::create())
             ]);
+    }
+
+    public static function create(): array
+    {
+        return [
+            TextInput::make('name')
+                ->required()
+                ->placeholder('Ej. Categoria 1. Tv')
+                ->label('Nombre'),
+            TextInput::make('summary')
+                ->required()
+                ->placeholder('Breve descripcion de la categoria')
+                ->label('Resumen'),
+        ];
     }
 }

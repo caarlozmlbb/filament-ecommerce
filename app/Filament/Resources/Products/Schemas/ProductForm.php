@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use App\Filament\Resources\Categories\Schemas\CategoryForm;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -55,6 +56,8 @@ class ProductForm
                             ->relationship('category', 'name')
                             ->searchable()
                             ->preload()
+                            ->createOptionForm(CategoryForm::create())
+                            ->createOptionModalHeading('Crear nueva categoria')
 
                     ]),
 

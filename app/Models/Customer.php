@@ -15,7 +15,7 @@ class Customer extends Model
         'is_active',
     ];
 
-       public function orders(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
